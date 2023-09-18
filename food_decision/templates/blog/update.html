@@ -6,11 +6,21 @@
 
 {% block content %}
   <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title"
-      value="{{ request.form['title'] or post['title'] }}" required>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    <label for="name">Name</label>
+    <input name="name" id="name"
+      value="{{ request.form['name'] or post['name'] }}" required>
+    <label for="recipe">Recipe</label>
+    <textarea name="recipe" id="recipe">{{ request.form['recipe'] or post['recipe'] }}</textarea>
+    <select name="meal" id="meal" multiple>
+      <option value="Dinner">Dinner</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Breakfast">Breakfast</option>
+    </select>
+    <select name="types" id="types" multiple>
+      <option value="Vegetarian">Vegetarian</option>
+      <option value="Meat">Meat</option>
+      <option value="Healthy">Healthy</option>
+    </select>
     <input type="submit" value="Save">
   </form>
   <hr>
