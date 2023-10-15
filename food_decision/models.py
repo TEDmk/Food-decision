@@ -1,4 +1,3 @@
-from sqlalchemy import Integer, String, UUID
 from sqlalchemy.orm import mapped_column
 from food_decision import db
 
