@@ -2,16 +2,16 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - microblog</title>
+        <title>{{ title }} - test</title>
         {% else %}
-        <title>microblog</title>
+        <title>test</title>
         {% endif %}
     </head>
     <body>
         <div>
-            Microblog:
+            Test:
             <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('add') }}">Add recipe</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}

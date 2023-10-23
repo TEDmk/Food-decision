@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h2>Recipe name:</h2>
+        <p>{{recipe.name}}</p>
+        <h2>Recipe description:</h2>
+        <p style="white-space: pre-line">{{recipe.description}}</p>
+        <h2>Recipe tags:</h2>
+        <ul>
+            {% for tag in recipe.tags['tags'] %}
+                <li>{{tag}}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

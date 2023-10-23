@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <a href="{{ url_for('recipe', recipe_id=recipe.id) }} ">{{recipe.name}}</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

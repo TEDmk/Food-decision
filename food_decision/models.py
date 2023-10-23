@@ -1,16 +1,18 @@
+import uuid
 from sqlalchemy.orm import mapped_column
+from sqlalchemy.dialects.postgresql import UUID
+
 from food_decision import db
 
 
-class User(db.Model):
-    __tablename__ = 'user'
-    id = mapped_column(db.Integer, primary_key=True)
-    name = mapped_column(db.String(50), unique=False)
-    email = mapped_column(db.String(120), unique=True)
-
-    def __init__(self, name=None, email=None):
-        self.name = name
-        self.email = email
+class Recipe(db.Model):
+    __tablename__ = 'recipe'
+    id = mapped_column(db.String(50), primary_key=True, default=str(uuid.uuid4()))
+    name = mapped_column(db.String(50), unique=False, nullable=False)
+    description = mapped_column(db.Text, unique=False, nullable=True)
+    persons = mapped_column(db.Integer, nullable=False)
+    ingredients = mapped_column(db.JSON, nullable=False)
+    tags = mapped_column(db.JSON, nullable=False)
 
     def __repr__(self):
-        return f'<User {self.name!r}>'
+        return f'<Meal {self.name!r}>'
