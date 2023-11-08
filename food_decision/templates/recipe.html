@@ -12,6 +12,11 @@
                 <li>{{tag}}</li>
             {% endfor %}
         </ul>
+        <h2>Number of persons:</h2>
+        <p>{{recipe.persons}}</p>
+        <h2>Recipe ingredient:</h2>
+        <p>{{recipe.ingredients['ingredient']}}</p>
+        <p>{{recipe.ingredients['quantity']}}</p>
 
     </div>
 {% endblock %}

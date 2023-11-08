@@ -17,8 +17,13 @@ def add():
     if form.validate_on_submit():
         new_meal = Recipe(
             name=form.name.data,
+            persons=form.persons.data,
             description=form.description.data,
-            tags={'tags': form.tags.data}
+            tags={'tags': form.tags.data},
+            ingredients={
+                'ingredient': form.ingredient_key.data,
+                'quantity': form.ingredient_value.data
+            }
         )
         db.session.add(new_meal)
         db.session.commit()
