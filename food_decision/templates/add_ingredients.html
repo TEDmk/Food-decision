@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ recipe.name }}</h2>
+    <h3>{{ recipe.description }}</h3>
+    <form action="" method="post" novalidate>
+        {% for i in range(recipe.total_ingredients) %}
+            <br>
+            <p>{{ form.ingredient_name.label }}</p> {{ form.ingredient_name(size=32) }}     # avoir côte à côte nom de l'ingrédient, quantité, unité, les ajouter en liste de tuple
+            <p>{{ form.ingredient_quantity.label }}</p> {{ form.ingredient_quantity(size=32) }}     # Possibilité de rajouter des paires ingrédient/quantité??
+            <p>{{ form.ingredient_unit.label }}</p> {{ form.ingredient_unit }}
+            {% for error in form.ingredient_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {% for error in form.ingredient_quantity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {% for error in form.ingredient_unit.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+        {% endfor %}
+        <p>{{ form.submit() }}</p>
+    </form>
+
+
+{% endblock %}

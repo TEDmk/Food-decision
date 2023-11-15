@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, SelectMultipleField, IntegerField
+from wtforms import StringField, SubmitField, TextAreaField, SelectMultipleField, IntegerField, SelectField
 from wtforms.validators import DataRequired, NumberRange
 
-from food_decision.enums import Tags
+from food_decision.enums import Tags, Units
 
 
 # class LoginForm(FlaskForm):
@@ -22,8 +22,19 @@ class MealForm(FlaskForm):
         ],
         default=1
     )
-    ingredient_key = StringField('Ingredient', validators=[DataRequired()])
-    ingredient_value = StringField('Quantity', validators=[DataRequired()])
+    total_ingredients = IntegerField(
+        'Quantity of ingredients',
+        validators=[
+            DataRequired(), NumberRange(1, 25, "1 to 25 ingredients")
+        ],
+        default=1
+    )
     tags = SelectMultipleField('Tags', choices=[tag.value for tag in Tags], validators=[DataRequired()])
     submit = SubmitField('Add')
 
+
+class IngredientForm(FlaskForm):
+    ingredient_name = StringField('Ingredient', validators=[DataRequired()])
+    ingredient_quantity = StringField('Quantity', validators=[DataRequired()])
+    ingredient_unit = SelectField('Unit', choices=[unit.value for unit in Units], validators=[DataRequired()])
+    submit = SubmitField('Add Ingredients')
