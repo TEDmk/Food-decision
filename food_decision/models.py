@@ -12,7 +12,6 @@ class Recipe(db.Model):
     name = mapped_column(db.String(50), unique=False, nullable=False)
     description = mapped_column(db.Text, unique=False, nullable=False)
     persons = mapped_column(db.Integer, nullable=False)
-    total_ingredients = mapped_column(db.Integer, nullable=False)
     ingredients = mapped_column(db.JSON, nullable=False)
     tags = mapped_column(db.JSON, nullable=False)
 
@@ -25,6 +24,5 @@ class DataRecipe:   # Add validation functions
     name: str
     description: str
     persons: int
-    total_ingredients: int
     ingredients: json
     tags: json

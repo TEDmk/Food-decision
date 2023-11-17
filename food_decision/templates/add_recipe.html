@@ -26,13 +26,6 @@
             {% endfor %}
         </p>
         <p>
-            <h3>{{ form.total_ingredients.label }}</h3>
-            Choose how many ingredients (from 1 to 25) {{ form.total_ingredients }}
-            {% for error in form.total_ingredients.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
             <h3>{{ form.tags.label }}</h3>
             {{ form.tags }}
             {% for error in form.tags.errors %}

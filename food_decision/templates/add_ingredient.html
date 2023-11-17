@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ recipe.name }}</h2>
+
+    <h3>{{ recipe.description }}</h3>
+
+    <h3>Ingredients:</h3>
+    {% if recipe.ingredients['ingredients'] %}
+        {% for ingredient in recipe.ingredients['ingredients'] %}
+            <li>{{ ingredient[2] }} {{ ingredient[1] }} - {{ ingredient[0] }}</li>
+        {% endfor %}
+    {% else %}
+        <p>No ingredient for the moment</p>
+    {% endif %}
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <br>
+        <p>{{ form.ingredient_name.label }}</p> {{ form.ingredient_name(size=32) }}
+        {% for error in form.ingredient_name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>{{ form.ingredient_quantity.label }}</p> {{ form.ingredient_quantity(size=32) }}
+        {% for error in form.ingredient_quantity.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>{{ form.ingredient_unit.label }}</p> {{ form.ingredient_unit }}
+        {% for error in form.ingredient_unit.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <br>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+
+{% endblock %}

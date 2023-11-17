@@ -22,13 +22,6 @@ class MealForm(FlaskForm):
         ],
         default=1
     )
-    total_ingredients = IntegerField(
-        'Quantity of ingredients',
-        validators=[
-            DataRequired(), NumberRange(1, 25, "1 to 25 ingredients")
-        ],
-        default=1
-    )
     tags = SelectMultipleField('Tags', choices=[tag.value for tag in Tags], validators=[DataRequired()])
     submit = SubmitField('Add')
 
@@ -37,4 +30,4 @@ class IngredientForm(FlaskForm):
     ingredient_name = StringField('Ingredient', validators=[DataRequired()])
     ingredient_quantity = StringField('Quantity', validators=[DataRequired()])
     ingredient_unit = SelectField('Unit', choices=[unit.value for unit in Units], validators=[DataRequired()])
-    submit = SubmitField('Add Ingredients')
+    submit = SubmitField('Add Ingredient')
