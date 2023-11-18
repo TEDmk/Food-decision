@@ -22,14 +22,12 @@ def create_recipe_from_form(form: MealForm):
     return create_recipe(data_recipe)
 
 
-def add_ingredient_to_recipe_from_form(recipe_to_update: Recipe, form: IngredientForm):
+def get_new_ingredients(recipe_to_update: Recipe, form: IngredientForm):
     ingredients = recipe_to_update.ingredients['ingredients']
     new_ingredients = [form.ingredient_name.data, form.ingredient_quantity.data, form.ingredient_unit.data]
     if ingredients:
         ingredients.append(new_ingredients)
-        print('\n type ', type(ingredients), '\n')
         ingredients = {'ingredients': ingredients}
     else:
         ingredients = {'ingredients': [new_ingredients]}
-    recipe_to_update.ingredients = ingredients
-    return recipe_to_update
+    return ingredients
